@@ -17,6 +17,7 @@ python upload2openafrica.py --key ${CKAN_API_KEY} --pkg {your package url} --tit
 ```bash
 python upload2openafrica.py \
 --key ${CKAN_API_KEY} \
+--org "water-and-sanitation-corporation-ltd-wasac"
 --pkg rw-water-vectortiles \
 --title "Vector Tiles for rural water supply systems in Rwanda" \
 --file ../data/rwss.mbtiles \
@@ -35,6 +36,7 @@ vi upload_mbtiles.sh
 
 pipenv run python upload2openafrica.py \
   --key ${CKAN_API_KEY} \
+  --org "water-and-sanitation-corporation-ltd-wasac"
   --pkg rw-water-vectortiles \
   --title "Vector Tiles for rural water supply systems in Rwanda" \
   --file ../data/rwss.mbtiles \

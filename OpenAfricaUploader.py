@@ -14,7 +14,7 @@ class OpanAfricaUploader(object):
     self.APIKEY = api_key
     self.ckan = ckanapi.RemoteCKAN(self.data_portal, apikey=self.APIKEY)
 
-  def create_package(self, url, title):
+  def create_package(self, org, url, title):
     """create new package if it does not exist yet.
 
     Args:
@@ -23,11 +23,12 @@ class OpanAfricaUploader(object):
     """
     package_name = url
     package_title = title
+    organization_name = org
     try:
         print ('Creating "{package_title}" package'.format(**locals()))
         self.package = self.ckan.action.package_create(name=package_name,
                                             title=package_title,
-                                            owner_org = 'water-and-sanitation-corporation-ltd-wasac')
+                                            owner_org = organization_name)
     except (ckanapi.ValidationError) as e:
         if (e.error_dict['__type'] == 'Validation Error' and
           e.error_dict['name'] == ['That URL is already in use.']):
